@@ -1,0 +1,37 @@
+<div id="app8">
+    <cpn8 :c-info="info" :child-my-message="message"></cpn8>
+</div>
+<template id="cpn8">
+    <div>
+        <h3>{{childMyMessage}}</h3>
+        <p>{{cInfo.name}} - {{cInfo.age}} - {{cInfo.love}}</p>
+    </div>
+</template>
+<script>
+    const cpn8 = {
+        template: '#cpn8',
+        props: {
+            cInfo: {
+                type: Object,
+                default() {
+                    return {}
+                }
+            },
+            childMyMessage: String
+        }
+    }
+    let app8 = new Vue({
+        el: '#app8',
+        data: {
+            info: {
+                name: 'Yang',
+                age: 18,
+                love: 'girl'
+            },
+            message: '驼峰标识符'
+        },
+        components: {
+            cpn8
+        }
+    });
+</script>

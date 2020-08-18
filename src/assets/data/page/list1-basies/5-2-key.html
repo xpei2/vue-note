@@ -1,0 +1,17 @@
+<div id="app">
+    <ul style="height: 161px;">
+        <small nopadding>:key=""，引号里面应该使用值，不能使用索引index，因为要保证key的唯一性，数组改变后索引都会跟着改变，不是唯一性</small>
+        <li v-for="item in arr" :key="item">{{item}}</li>
+    </ul>
+</div>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            arr: ['A', 'B', 'C']
+        }
+    });
+    setTimeout(() => {
+        app.arr.splice(2, 0, 'F');
+    }, 2000);
+</script>

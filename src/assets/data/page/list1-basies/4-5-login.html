@@ -1,0 +1,19 @@
+<div id="app">
+    <span v-if="isUser">
+        <label for="userEmail">用户邮箱：</label>
+        <input type="text" placeholder="请输入邮箱" id="userEmail" key="userEmail">
+    </span>
+    <span v-else>
+        <label for="userPass">用户密码：</label>
+        <input type="text" placeholder="请输入密码" id="userPass" key="userPass">
+    </span>
+    <button @click="isUser = !isUser">切换类型</button>
+</div>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            isUser: true
+        }
+    });
+</script>

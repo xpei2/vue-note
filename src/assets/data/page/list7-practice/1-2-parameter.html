@@ -1,0 +1,25 @@
+<div id="app">
+    <ul>
+        <li v-for="(m, index) in list">{{study(index)}}</li>
+    </ul>
+</div>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            message: '你好啊！',
+            list: [
+                { name: 'js', time: '15', note: '记载' },
+                { name: 'es6', time: '10', note: '记载' },
+                { name: 'vue', time: '20', note: '记载' },
+                { name: 'web', time: '25', note: '记载' },
+            ]
+        },
+        methods: {},
+        computed: {
+            study() {
+                return (index) => `现在学习 ${this.list[index].name} 已经 ${this.list[index].time} 天了，笔记也已经 ${this.list[index].note} 下来。`;
+            }
+        }
+    });
+</script>

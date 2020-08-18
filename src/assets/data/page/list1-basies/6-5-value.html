@@ -1,0 +1,16 @@
+<div id="app">
+    <label :for="value" v-for="value in habbyVlue">
+        <input type="checkbox" :id="value" :value="value" v-model="hobbies">{{value}}
+    </label>
+    <p>您的爱好有：{{hobbies}}</p>
+</div>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            habbyVlue: ['篮球', '游戏', '电影', '旅游', '美女', '小说'],
+            isAgree: false,
+            hobbies: []
+        }
+    });
+</script>

@@ -1,0 +1,46 @@
+<div id="app11">
+    <cpn11></cpn11>
+    <cpn11 ref="aaa"></cpn11>
+    <button @click="btnClick">按钮</button>
+</div>
+<template id="cpn11">
+    <div>我是子组件，父组件访问我</div>
+</template>
+<script>
+    let app11 = new Vue({
+        el: '#app11',
+        data: {
+            message: '你好啊！',
+        },
+        methods: {
+            //   通过children拿子组件，可以直接访问子组件的属性及其方法等
+            // btnClick() {
+            //     // $children得到的是一个vue对象的数组，调用一次子组件得到一个数组元素
+            //     console.log(this.$children);             // [VueComponent, VueComponent]
+            //     console.log(this.$children[0].name);     // 我是子组件name
+            //     this.$children[0].showMessage();         // ssss
+            // }  
+
+            //   通过children拿子组件
+            btnClick() {
+                console.log(this.$refs);           // 我是子组件name
+                console.log(this.$refs.aaa.name);           // 我是子组件name
+            }
+        },
+        components: {
+            cpn11: {
+                template: '#cpn11',
+                data() {
+                    return {
+                        name: '我是子组件name'
+                    }
+                },
+                methods: {
+                    showMessage() {
+                        console.log('ssss');
+                    }
+                }
+            }
+        }
+    });
+</script>

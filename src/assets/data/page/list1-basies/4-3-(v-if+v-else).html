@@ -1,0 +1,22 @@
+<div id="app">
+    <p>2秒后v-if变成false</p>
+    <ul v-if="isShow">
+        <li>{{message}}</li>
+        <li>{{message}}</li>
+        <li>{{message}}</li>
+        <li>{{message}}</li>
+    </ul>
+    <p v-else>isShow为false时，显示我</p>
+</div>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            message: '你好啊！',
+            isShow: true
+        }
+    });
+    setTimeout(() => {
+        app.isShow = false;
+    }, 2000);
+</script>

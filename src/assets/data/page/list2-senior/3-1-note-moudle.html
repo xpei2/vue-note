@@ -1,0 +1,64 @@
+<div id="app18">
+    <ul>
+        <li><em nopadding>定义：</em>let value1 = 10, value2 = 99, let value3 = 52;</li>
+        <li><em nopadding>导出对象：</em>export{value1, value2, value3};</li>
+        <li><em nopadding>导出值：</em>export let num = 200;</li>
+        <li><em nopadding>导出函数：</em>export function mul(num, value1) { return num + value1; }</li>
+        <li><em nopadding>导出类：</em>export class Person { run() { console.log('导出了一个类'); } }<small>class ,es6类的语法</small></li>
+        <li><em nopadding>导入对象1：</em>import { value1 as a, value2 as b, value3 as c } from './js/export.js';<small>as：给导入数据重命名</small></li>
+        <li><em nopadding>导入对象2：</em>import { value1, value2, value3 } from './js/export.js';</li>
+        <li><em nopadding>导入值：</em>import { num } from './js/export.js';</li>
+        <li><em nopadding>导入函数：</em>import { mul } from './js/export.js';</li>
+        <li><em nopadding>导入类：</em>import { Person } from './js/export.js';</li>
+        <li><em nopadding>通配符方法：</em>import * as 自定义对象名 from './js/export.js';<small>就是将导出的所有东西作为一个对象导入</small></li>
+        <li><small nopadding>导出默认：export default {}，此方法导入的时候不需要加花括号</small></li>
+        <li><small nopadding>更多详情请看es6第九节模块化笔记</small></li>
+        <button @click="console1">打印</button>
+    </ul>
+</div>
+
+<script>
+    // 导出文件
+    // let value1 = 10;
+    // let value2 = 99;
+    // let value3 = 52;
+
+    // export {
+    //     value1,
+    //     value2,
+    //     value3
+    // };
+    // export let num = 20;
+    // export function mul(num, value1) {
+    //     return num + value1;
+    // }
+    // export class Person { run() { console.log('导入类：', 0); } }
+
+
+    // 导入文件，因为jquer的load加载文件不识别script的type = "module"，暂时用普通代替操作
+    // import { value1 as a, value2 as b, value3 as c } from './3-1-note-module.js';
+    // import { value1, value2, value3, num, mul, Person } from './3-1-note-module.js';
+
+    let value1 = a = 10;
+    let value2 = b = 99;
+    let value3 = c = 52;
+    let num = 20;
+    function mul(num, value1) {
+        return num + value1;
+    }
+    class Person { run() { console.log('导入类：', 0); } }
+
+    let app18 = new Vue({
+        el: '#app18',
+        methods: {
+            console1() {
+                console.log('导入对象1：', a, b, c);
+                console.log('导入对象2：', value1, value2, value3);
+                console.log('导入值：', num);
+                console.log('导入函数：', mul(num, value1));
+                let per = new Person();
+                per.run();
+            }
+        }
+    })
+</script>

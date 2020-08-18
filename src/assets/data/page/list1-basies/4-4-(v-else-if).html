@@ -1,0 +1,25 @@
+<div id="app" style="height: 104px;">
+    <p>2秒后v-if条件变化<small>提示：最好不用v-else-if，判断多的情况下最好在方法或者计算属性中判读，html文档越简单越好</small></p>
+    <p v-if="score>=90">优秀</p>
+    <p v-else-if="score>=80">良好</p>
+    <p v-else-if="score>=60">及格</p>
+    <p v-else>不及格</p>
+    <p>用计算属性更合适：{{result}}</p>
+</div>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            score: 98
+        },
+        computed: {
+            result() {
+                let showMessage = this.score >= 90 ? '优秀' : this.score >= 80 ? '良好' : this.score >= 60 ? '及格' : '不及格';
+                return showMessage;
+            }
+        }
+    });
+    setTimeout(() => {
+        app.score = 60;
+    }, 2000);
+</script>

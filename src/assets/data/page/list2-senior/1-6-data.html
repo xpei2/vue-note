@@ -1,0 +1,55 @@
+<div id="app6">
+    <my-cpn6></my-cpn6>
+    <my-cpn6></my-cpn6><br>
+    <button onclick="proving()">验证为什么data对象必须是函数</button>
+</div>
+<template id="cpn6">
+    <div>
+        <h3>{{title}}</h3>
+        <p>当前计数：{{counter}}</p>
+        <button @click="increment">+</button>
+        <button @click="decrement" :disabled="disabled">-</button>
+    </div>
+</template>
+<script>
+    Vue.component('my-cpn6', {
+        template: '#cpn6',
+        data() {
+            return {
+                title: '我是组件数据存放标题',
+                counter: 0,
+                disabled: true
+            }
+        },
+        methods: {
+            increment() {
+                this.counter++;
+                this.disabled = this.counter > 0 && false;
+            },
+            decrement() {
+                this.counter--;
+                this.disabled = this.counter <= 0 && true;
+            }
+        }
+    });
+    let app6 = new Vue({
+        el: '#app6'
+    });
+
+    // 举例说明为什么data属性必须是函数，避免多次调用使用同一个对象
+    function abc() {
+        return {
+            name: 'Yang',
+            age: 18
+        }
+    }
+    let obj1 = abc();
+    let obj2 = abc();
+    let obj3 = abc();
+    obj1.name = 'jian';
+    function proving() {
+        console.log(obj1.name);
+        console.log(obj2.name);
+        console.log(obj3.name);
+    }
+</script>

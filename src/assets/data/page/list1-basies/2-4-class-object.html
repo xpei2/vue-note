@@ -1,0 +1,38 @@
+<style>
+    #app1 .red{
+        color: red;
+    }
+
+    #app1 .green {
+        color: green;
+    }
+
+    #app1 .italic{
+        font-style: italic;
+    }
+</style>
+<div id="app1">
+    <p class="italic" :class="{'red': isRed, 'green': isGreen}">{{message}}<small>{{class_msg}}</small></p>
+    <p class="italic" :class="getClass()">{{message}}<small>{{v_bind_msg}}</small></p>
+    <button @click="changeColor">变色</button>
+</div>
+<script>
+    let app1 = new Vue({
+        el: '#app1',
+        data: {
+            message: '你好啊！',
+            isRed: true,
+            isGreen: true,
+            class_msg: '内部会将普通的class 和 :class的类名重新组合在一起，避免代码冗余',
+            v_bind_msg: 'v-bind指令调用方法时方法需要加小括号，v-on指令调用方法不需要（被省略）'
+        },
+        methods: {
+            changeColor: function () {
+                this.isGreen = !this.isGreen;
+            },
+            getClass: function () {
+                return { 'red': this.isRed, 'green': this.isGreen };
+            }
+        }
+    });
+</script>

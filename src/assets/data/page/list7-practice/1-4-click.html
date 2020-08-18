@@ -1,0 +1,52 @@
+<div id="app">
+    <ul>
+        <li v-for="(item, index) in flowers" @click="getInfo(index)" :style="isColor(index)">{{item | newHtml}}<span v-if="oneShow(index)">——购买花费：{{item.num * item.price}}</span></li>
+    </ul>
+    <p><button @click="getInfo">计算</button><small>点击计算总共花费</small></p>
+    <p class="hide" :style="{display: isShow}">总共花费：{{alltotal}}</p>
+</div>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            message: '你好啊！',
+            showIndex: -1,
+            alltotal: 0,
+            isShow: 'none',
+            flowers: [
+                { name: '玫瑰花', num: 9, price: 10, color: 'red' },
+                { name: '郁金香', num: 11, price: 20, color: 'yellow' },
+                { name: '薰衣草', num: 19, price: 5, color: 'purple' },
+                { name: '百合花', num: 1, price: 50, color: 'white' }
+            ]
+        },
+        methods: {
+            getInfo(index) {
+                if (typeof index == 'number') {
+                    this.showIndex = this.showIndex == index ? -1 : index;
+                } else {
+                    this.isShow = 'block';
+                    this.alltotal = this.allTotal;
+                }
+            },
+            oneShow(index) {
+                return this.alltotal == 0 ? this.showIndex === index ? true : false : true;
+            },
+            isColor(index) {
+                return this.alltotal == 0 ? { color: this.showIndex === index ? this.flowers[index].color : '' } : { color: this.flowers[index].color };
+            }
+        },
+        computed: {
+            allTotal() {
+                return this.flowers.reduce((total, a) => {
+                    return total + a.price* a.num;
+                }, 0);
+            },
+        },
+        filters: {
+            newHtml(element) {
+                return `购买 ${element.name} ${element.num} 朵，每一朵 ${element.price} 元`;
+            }
+        }
+    });
+</script>

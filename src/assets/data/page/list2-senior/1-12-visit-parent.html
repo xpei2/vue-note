@@ -1,0 +1,49 @@
+<div id="app12">
+    <small nopadding>用的很少，因为子组件需要独立，访问了父组件则有了关联，不适宜独立</small>
+    <cpn12></cpn12>
+</div>
+<template id="cpn12">
+    <div>
+        <p>我是子组件</p>
+        <cpn12_son></cpn12_son>
+    </div>
+</template>
+<template id="cpn12_son">
+    <div>
+        <div>我是子组件的子组件，访问父组件</div>
+        <button @click="btnClick">按钮</button>
+    </div>
+</template>
+<script>
+    let app12 = new Vue({
+        el: '#app12',
+        data: {
+            message: '你好啊！',
+        },
+        components: {
+            cpn12: {
+                template: '#cpn12',
+                data() {
+                    return {
+                        name: '我是子组件的name'
+                    }
+                },
+                components: {
+                    cpn12_son: {
+                        template: '#cpn12_son',
+                        methods: {
+                            btnClick() {
+                                // 1.访问父组件$parent
+                                console.log(this.$parent);          //Vuecomponent Vue组件
+                                console.log(this.$parent.name);     //我是子组件的name
+
+                                // 2.访问根组件$root
+                                console.log(this.$root);            //Vue实例
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    });
+</script>

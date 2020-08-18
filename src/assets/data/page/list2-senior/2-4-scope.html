@@ -1,0 +1,29 @@
+<div id="app16">
+    <cpn16 v-show="isShow"></cpn16>
+</div>
+<template id="cpn16">
+    <div>
+        <h3>我是子组件</h3>
+
+        <p v-show="isShow">啥塞给</p>
+    </div>
+</template>
+<script>
+    let app16 = new Vue({
+        el: '#app16',
+        data: {
+            message: '你好啊！',
+            isShow: true        //这个变量只管辖app15实例里面的东西
+        },
+        components: {
+            cpn16: {
+                template: '#cpn16',
+                data() {
+                    return {
+                        isShow: false       //这个变量也只管辖此子组件里面的东西
+                    }
+                }
+            }
+        }
+    });
+</script>

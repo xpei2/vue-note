@@ -1,0 +1,19 @@
+<div id="app">
+    <!-- <p :style="{key(属性名): value(属性值)}">{{message}}</p> -->
+    <p :style="getStyle()">{{message}}</p>
+</div>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            message: '你好啊！',
+            newSize: '50px',
+            newColor: 'green'
+        },
+        methods: {
+            getStyle: function () {
+                return { fontSize: this.newSize, color: this.newColor };
+            }
+        }
+    });
+</script>

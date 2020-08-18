@@ -1,0 +1,35 @@
+<div id="app">
+    <ul>
+        <small nopadding>遍历数组1：只获取一个值时，获取到的就是value(值)</small>
+        <li v-for="item in forArray">{{item}}</li>
+    </ul>
+    <ul>
+        <small nopadding>遍历数组2：获value和index时 格式：(值, 索引)</small>
+        <li v-for="(item, index) in forArray">{{index + 1}} - {{item}}</li>
+    </ul>
+    <ul>
+        <small nopadding>遍历对象1：只获取一个值，获取到的就是value(值)</small>
+        <li v-for="item in forObject">{{item}}</li>
+    </ul>
+    <ul>
+        <small nopadding>遍历对象2：获取value和key 格式：(值, 键)</small>
+        <li v-for="(value, key) in forObject">{{key}} - {{value}}</li>
+    </ul>
+    <ul>
+        <small nopadding>遍历对象3：：获取value和key和index 格式：(值, 键, 索引)</small>
+        <li v-for="(value, key, index) in forObject">{{index + 1}}- {{key}} - {{value}}</li>
+    </ul>
+</div>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            forArray: ['opple', 'orange', 'widnow'],
+            forObject: {
+                name: 'Yang',
+                age: 18,
+                like: 'games'
+            }
+        }
+    });
+</script>

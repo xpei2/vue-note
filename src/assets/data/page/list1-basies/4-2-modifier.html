@@ -1,0 +1,47 @@
+<div id="app">
+    <!-- 1、.stop修饰符的使用，阻止事件冒泡 -->
+    <div @click="divClick">
+        <span>div内部其他内容</span>
+        <button @click.stop="btnClick">按钮</button>
+        <small>.stop修饰符的使用，阻止事件冒泡</small>
+    </div>
+    <!-- 2、.prevent修饰符的使用，阻止默认事件 -->
+    <form action="baidu">
+        <input type="submit" value="提交" @click.prevent="subClick">
+        <small>.prevent修饰符的使用，阻止默认事件</small>
+
+    </form>
+    <!-- 3、监听键盘某个按键的点击，按键事件可以是ascii码值也可以是按键名字 -->
+    <div>
+        <input type="text" @keyup.enter="keyUpEnter">
+        <input type="text" @keyup.13="keyUpEnter">
+        <small>3、监听键盘某个按键的点击，按键事件可以是ascii码值也可以是按键名字</small>
+    </div>
+    <!-- 4.只触发一次回调函数 -->
+    <div>
+        <button @click.once="onceClick">按钮</button>
+        <small>.once只触发一次回调函数</small>
+    </div>
+</div>
+<script>
+    let app = new Vue({
+        el: '#app',
+        methods: {
+            divClick() {
+                console.log('div被点击');
+            },
+            btnClick() {
+                console.log('按钮被点击');
+            },
+            subClick() {
+                console.log('提交按钮被点击');
+            },
+            keyUpEnter() {
+                console.log('Enter键被按了');
+            },
+            onceClick() {
+                console.log('按钮已经被点击了一次，不能再次回调');
+            }
+        }
+    });
+</script>

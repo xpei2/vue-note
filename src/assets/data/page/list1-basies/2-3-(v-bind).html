@@ -1,0 +1,14 @@
+<div id="app">
+    <img v-bind:src="imgURL" alt="">
+    <p><a v-bind:href="xpeiUrl">小培站点</a></p>
+</div>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            message: '你好啊！',
+            imgURL: 'http://xpei.ren/uploads/allimg/180704/1-1PF41KJ0-lp.jpg',
+            xpeiUrl: 'http://xpei.ren'
+        }
+    });
+</script>

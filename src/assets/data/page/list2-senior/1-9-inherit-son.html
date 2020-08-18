@@ -1,0 +1,51 @@
+<!-- 父组件模板 -->
+<div id="app9">
+    <cpn9 @item-click="cpn9Click"></cpn9>
+</div>
+<!-- 子组件模板 -->
+<template id="cpn9">
+    <div>
+        <button v-for="item in categories" @click="bntClick(item)">{{item.name}}</button>
+    </div>
+</template>
+<script>
+    // 子组件
+    const cpn9 = {
+        template: '#cpn9',
+        data() {
+            return {
+                categories: [
+                    { id: 'aaa', name: '热门推荐' },
+                    { id: 'bbb', name: '手机数码' },
+                    { id: 'ccc', name: '家具家电' },
+                    { id: 'ddd', name: '电脑办公' }
+                ]
+            }
+        },
+        methods: {
+            bntClick(item) {
+                this.$emit('item-click', item);
+            }
+        }
+    }
+    // 父组件
+    let app9 = new Vue({
+        el: '#app9',
+        data: {
+            info: {
+                name: 'Yang',
+                age: 18,
+                love: 'girl'
+            },
+            message: '驼峰标识符'
+        },
+        components: {
+            cpn9
+        },
+        methods: {
+            cpn9Click(item) {
+                console.log(item);
+            }
+        }
+    });
+</script>

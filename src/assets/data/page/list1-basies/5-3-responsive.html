@@ -1,0 +1,129 @@
+<style>
+    #app {
+        position: relative;
+        padding-left: 100px;
+    }
+
+    #app .m-itemlist {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    #app .m-btnlist {
+        list-style: none;
+    }
+
+    #app .m-btnlist button {
+        width: 70px;
+        text-align: center;
+    }
+</style>
+<div id="app">
+    <ul class="m-itemlist">
+        <small nopadding></small>
+        <li v-for="item in arr">{{item}}</li>
+    </ul>
+    <ul class="m-btnlist">
+        <li v-for="(item ,index) in btnList"><button @click="btnFn(item.name)">{{item.name}}()</button><small v-html="item.smallMsg"></small></li>
+    </ul>
+</div>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            arr: ['A', 'C', 'B', 'D'],
+            arrReset: ['A', 'C', 'B', 'D'],
+            btnList: [
+                {
+                    name: 'push',
+                    smallMsg: 'push方法：响应式，从末尾添加元素，可以同时添加多个元素'
+                },
+                {
+                    name: 'pop',
+                    smallMsg: 'pop方法：响应式，删除数组最后一个元素'
+                },
+                {
+                    name: 'shift',
+                    smallMsg: 'shift方法：响应式，删除数组第一个元素'
+                },
+                {
+                    name: 'unshift',
+                    smallMsg: 'unshift方法：响应式，在数组前面添加元素，可以添加多个元素'
+                },
+                {
+                    name: 'splice',
+                    smallMsg: 'splice方法：响应式，第一参数数组索引位置（必须）是，第二个删除数量（可选，没有值就是后面全部删除），第三个及其以上（可选）是新增的元素内容'
+                },
+
+                {
+                    name: 'sort',
+                    smallMsg: 'sort方法：响应式，排序'
+                },
+                {
+                    name: 'reverse',
+                    smallMsg: 'reverse方法：响应式，从末尾添加元素'
+                },
+                {
+                    name: 'change',
+                    smallMsg: '<em nopadding>警告：</em>通过索引值更改元素非响应式，请看控制台，但是可用splice方法代替，或者下面Vue自带的方法'
+                },
+                {
+                    name: 'Vueset',
+                    smallMsg: 'Vue内部的修改数组元素方法，响应式，方法：set(修改的对象, 索引值, 修改后的值)'
+                },
+                {
+                    name: 'reset',
+                    smallMsg: '重置按钮'
+                }
+            ]
+        },
+        methods: {
+            btnFn(fn) {
+                switch (fn) {
+                    case 'push':
+                        // push方法，从末尾添加元素
+                        this.arr.push('新增aaa', '新增bbb');
+                        break;
+                    case 'pop':
+                        // pop方法，删除数组最后一个元素
+                        this.arr.pop();
+                        break;
+                    case 'shift':
+                        // shift方法，删除数组第一个元素
+                        this.arr.shift();
+                        break;
+                    case 'unshift':
+                        // unshift方法，删除数组第一个元素
+                        this.arr.unshift('新增aaa', '新增bbb');
+                        break;
+                    case 'splice':
+                        // splice方法，删除元素/插入元素/替换元素
+                        this.arr.splice(2, 1, '替换aaa');
+                        break;
+                    case 'sort':
+                        // sort方法，排序
+                        this.arr.sort();
+                        break;
+                    case 'reverse':
+                        // reverse方法，将数组反向排列(并非是倒序，只是在原基础上反向排列)
+                        this.arr.reverse();
+                        break;
+                    case 'change':
+                        // 通过索引更改数组元素
+                        this.arr[0] = '更改值bb';
+                        console.log(this.arr);
+                        break;
+                    case 'Vueset':
+                        // Vue内部的修改数组元素方法，响应式
+                        Vue.set(this.arr, 0, '更改值bb');
+                        break;
+                    case 'reset':
+                        this.arr = this.arrReset;
+                        break;
+                }
+            }
+
+        }
+    });
+</script>

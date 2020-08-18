@@ -1,0 +1,28 @@
+<div id="app1">
+    <my-cpn></my-cpn>
+</div>
+<div id="app2">
+    <!-- 创建的局部组件,此处不可用 -->
+    <!-- <my-cpn></my-cpn> -->
+</div>
+<script>
+    const cpn = Vue.extend({
+        template: `
+        <div>
+            <h3>我是全局组件和局部组件区分</h3>
+            <p>哈哈哈</p>
+        </div>`
+    });
+    // 2.注册组件（全局组件，意味着可以在多个Vue实例对象里面使用）
+    // Vue.component('my-cpn', cpn);
+
+    let app1 = new Vue({
+        el: '#app1',
+        components: {   //在实例对象中创建局部组件
+            'my-cpn': cpn
+        }
+    });
+    let app2 = new Vue({
+        el: '#app2'
+    });
+</script>

@@ -1,0 +1,34 @@
+<div id="app7">
+    <cpn7 :cmessage="message" :cmovies="movies"></cpn7>
+</div>
+<template id="cpn7">
+    <div>
+        <h3>{{cmessage}}</h3>
+        <ul>
+            <li v-for="value in cmovies">{{value}}</li>
+        </ul>
+    </div>
+</template>
+<script>
+    const cpn7 = {
+        template: '#cpn7',
+        // props: ['cmessage', 'cmovies'],
+        props: {        //props对象写法，好处是可以对数据进行类型验证
+            cmessage: {
+                type: String,
+                default: '寇妮马'       //默认值
+            },
+            cmovies: Array,
+        }
+    }
+    let app7 = new Vue({
+        el: '#app7',
+        data: {
+            message: '父组件的内容',
+            movies: ['火影', '海王', '海尔兄弟']
+        },
+        components: {
+            cpn7
+        }
+    });
+</script>

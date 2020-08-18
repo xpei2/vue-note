@@ -1,0 +1,72 @@
+<div id="app">
+    <cpn :number1="num1" :number2="num2" @num1-change="getNum1" @num2-change="getNum2"></cpn>
+</div>
+<template id="cpn">
+    <div>
+        <p>需求1：子组件获取父组件值输入到页面中</p>
+        <p>需求2：子组件修改input值时响应式父组件数据也跟着变</p>
+        <p>需求3：上面更改永远是下面的1/100，下面更改永远是上面100倍</p>
+        <p>需要用到：1.组件父传子props获取数据 2.字传父$emit()传出数据 3.input的值绑定原理v-bind + v-on:input</p>
+        <p>props：{{number1}}<small>如果只是获取父组件数据并展示，可直接使用props内的数据</small></p>
+        <p>data：{{dnumber1}}<small>如果获取父组件数据并在子组件中更改，切记不可直接用props数据，最好给子组件定义个data</small></p>
+        <!-- <input type="text" v-model="dnumber1"> -->
+        <input type="text" :value="dnumber1" @input="num1Input">
+        <p>props：{{number2}}</p>
+        <p>data：{{dnumber2}}</p>
+        <!-- <input type="text" v-model="dnumber2"> -->
+        <input type="text" :value="dnumber2" @input="num2Input">
+    </div>
+</template>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            num1: 1,
+            num2: 0
+        },
+        methods: {
+            getNum1(value) {
+                this.num1 = Number(value);
+            },
+            getNum2(value) {
+                this.num2 = Number(value);
+            }
+        },
+        components: {
+            cpn: {
+                template: '#cpn',
+                props: {
+                    number1: Number,
+                    number2: Number
+                },
+                data() {
+                    return {
+                        dnumber1: this.number1,
+                        dnumber2: this.number2,
+                    }
+                },
+                methods: {
+                    num1Input(e) {
+                        // 1.将input中的value赋值到dnumber中
+                        this.dnumber1 = e.target.value;
+                        // .为了让父组件可以修改值，发出一个事件
+                        this.$emit('num1-change', this.dnumber1);
+                        // 同时修饰dnumber2的值
+                        this.dnumber2 = this.dnumber1 * 100;
+                        this.$emit('num2-change', this.dnumber2);
+                        //打印props获取的值变化
+                        console.log(this.number1); 
+                    },
+                    num2Input(e) {
+                        this.dnumber2 = e.target.value;
+                        this.$emit('num2-change', this.dnumber2);
+
+                        // 同时修饰dnumber1的值
+                        this.dnumber1 = this.dnumber2 / 100;
+                        this.$emit('num1-change', this.dnumber1);
+                    }
+                }
+            }
+        }
+    });
+</script>

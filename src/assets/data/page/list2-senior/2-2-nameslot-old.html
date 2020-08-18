@@ -1,0 +1,36 @@
+<div id="app14">
+    <cpn14>
+        <template slot="header">
+            <p>替换header内容</p>
+        </template>
+        <p>没有添加slot属性默认替换slot中没有name的插槽</p>
+        <div slot="footer">替换footer内容</div>
+    </cpn14>
+</div>
+<template id="cpn14">
+    <div>
+        <header>
+            <slot name="header"></slot>
+        </header>
+        <main>
+            <!-- 没有添加name的插槽，如果没有空插槽，调用时又没有添加slot属性，则不会替换 -->
+            <slot></slot>
+        </main>
+        <footer>
+            <slot name="footer"></slot>
+        </footer>
+    </div>
+</template>
+<script>
+    let app14 = new Vue({
+        el: '#app14',
+        data: {
+            message: '你好啊！',
+        },
+        components: {
+            cpn14: {
+                template: '#cpn14'
+            }
+        }
+    });
+</script>

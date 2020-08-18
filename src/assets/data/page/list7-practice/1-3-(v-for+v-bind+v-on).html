@@ -1,0 +1,24 @@
+<style>
+    #app .red {
+        color: red;
+    }
+</style>
+<div id="app">
+    <ul>
+        <li v-for="(li, index) in movies" :class="{'red': colorIndex == index}" @click="changeRed(index)">{{index + 1}}-{{li}}</li>
+    </ul>
+</div>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            movies: ['你好啊！', '巨人', '火影', '神州大地'],
+            colorIndex: 0,
+        },
+        methods: {
+            changeRed: function (index) {
+                this.colorIndex = this.colorIndex == index ? -1 : index;
+            }
+        }
+    });
+</script>

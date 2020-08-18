@@ -1,0 +1,31 @@
+<div id="app13">
+    <!-- 如果没有传入就是默认值 -->
+    <cpn13></cpn13>
+    <!-- 可以插入自己想要的东西 -->
+    <cpn13>
+        <span>如果只有一个插槽</span>
+        <strong>插入的东西会</strong>
+        <i>全部插入插槽中</i>
+    </cpn13>
+</div>
+<template id="cpn13">
+    <div>
+        <h3>我是插槽组件</h3>
+        <p>哈撒给</p>
+        <!-- 插槽里面可以放默认值 -->
+        <slot><button>按钮</button></slot>
+    </div>
+</template>
+<script>
+    let app13 = new Vue({
+        el: '#app13',
+        data: {
+            message: '你好啊！',
+        },
+        components: {
+            cpn13: {
+                template: '#cpn13'
+            }
+        }
+    });
+</script>

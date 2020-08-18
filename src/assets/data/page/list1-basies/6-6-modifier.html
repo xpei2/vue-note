@@ -1,0 +1,31 @@
+<div id="app">
+    <div>
+        <p><small nopadding>lazy: 懒惰模式，就是当输入框失去焦点/点击回车时再更新数据</small></p>
+        <input type="text" v-model.lazy="name">
+        <p>您的姓名是：{{name}}</p>
+    </div>
+    <div>
+        <p><small nopadding>number: v-model默认传输数据为string类型，此修饰符是将数字转换为number类型</small></p>
+        <input type="number" v-model="age1">
+        <p>类型：{{typeof age1}}<small>v-model默认String类型</small></p>
+        <input type="number" v-model.number="age2">
+        <p>类型：{{typeof age2}}</p>
+        <p>您的年龄是：{{age2}}</p>
+    </div>
+    <div>
+        <p><small nopadding>trim: 去除空格</small></p>
+        <input type="text" v-model.trim="habby">
+        <p>您的爱好是：{{habby}}</p>
+    </div>
+</div>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            name: 'Yang',
+            age1: 18,
+            age2: 18,
+            habby: '游戏'
+        }
+    });
+</script>

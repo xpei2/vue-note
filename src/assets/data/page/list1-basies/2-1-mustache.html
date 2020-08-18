@@ -1,0 +1,17 @@
+<div id="app">
+    <p>{{message}}，流浪者</p>
+    <p>{{firstName + '~' + lastName}}</p>
+    <p>{{firstName}} {{lastName}}</p>
+    <p>{{counter * 2}}</p>
+</div>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            message: '您好啊！',
+            firstName: '流浪者',
+            lastName: 'Yang',
+            counter: 100
+        }
+    });
+</script>

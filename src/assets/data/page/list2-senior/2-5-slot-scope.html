@@ -1,0 +1,90 @@
+<div id="app17">
+    <cpn17>
+        <template v-slot:default>
+            <small nopadding>1.此提示信息替换了没有name属性的所有内容，有name的直接展示默认值</small><br>
+        </template>
+    </cpn17>
+    <!-- v-slot:default="插槽定义的:slotinfo" -->
+    <cpn17>
+        <template v-slot:default="slotProps">
+            <small nopadding>2.获取子组件数据在父组件中添加内容或修改数据，template语法：</small><br>
+            <span>v-slot:default：{{slotProps.slotinfo.firstName}}，{{slotProps.slotinfo.age}}</span>
+        </template>
+    </cpn17>
+    <cpn17 v-slot:default="slotProps">
+        <small nopadding>3.使用组件标签语法：</small><br>
+        <span>v-slot:default：{{slotProps.slotinfo.firstName}}，{{slotProps.slotinfo.age}}</span>
+    </cpn17>
+    <cpn17>
+        <template v-slot="slotProps">
+            <small nopadding>4.默认的可省略default：</small><br>
+            <span>v-slot:default：{{slotProps.slotinfo.firstName}}，{{slotProps.slotinfo.age}}</span>
+        </template>
+    </cpn17>
+    <cpn17>
+        <template v-slot:other="otherProps">
+            <small nopadding>6.具名的插槽替换，无名字的直接展示<em>警告：</em>template语法和组件标签语法都行，且具名的不能省略名字：</small><br>
+            <span>v-slot:default：{{otherProps.otherinfo.firstName}}，{{otherProps.otherinfo.age}}</span>
+        </template>
+    </cpn17>
+    <cpn17>
+        <template v-slot="{slotinfo}">
+            <small nopadding>7.具名插槽的结构赋值，花括号内直接使用定义的:slotinfo名字，<em>警告：用的插槽的定义名，不是值</em>：</small><br>
+            <span>v-slot:default：{{slotinfo.firstName}}</span>
+        </template>
+    </cpn17>
+    <cpn17>
+        <template v-slot="{slotinfo : person}">
+            <small nopadding>8.更改对象名：</small><br>
+            <span>v-slot:default：{{person.firstName}}</span>
+        </template>
+    </cpn17>
+    <cpn17>
+        <template v-slot="{slotinfo}">
+            <small nopadding>9.修改对象里面的数据：<em>警告： slotinfo = {firstName: '修改后的名字'} 修改值是无效的</em></small><br>
+            <span>v-slot:default：{{slotinfo.firstName = '修改后的名字'}}</span>
+        </template>
+    </cpn17>
+    <cpn17>
+        <template #other>
+            <small nopadding>10.命名插槽的语法糖：<em>警告：#={} 和 #default={} 是无效的</em></small><br>
+            <small nopadding>10.语法糖在有name时才能用，无name没发用</small><br>
+            <em nopadding>还有一个动态插槽名的知识暂时没弄明白</em>
+        </template>
+    </cpn17>
+</div>
+<template id="cpn17">
+    <div>
+        <p>
+            <slot :slotinfo="info">
+                <span>无name属性：{{info.firstName}}，{{info.age}}</span>
+            </slot>
+        </p>
+        <p>
+            <slot name="other" :otherinfo="info">
+                <span>有name属性：{{info.firstName}}，{{info.age}}</span>
+            </slot>
+        </p>
+    </div>
+</template>
+<script type="text/javascript">
+    let app17 = new Vue({
+        el: '#app17',
+        data: {
+            message: '你好啊！'
+        },
+        components: {
+            cpn17: {
+                template: '#cpn17',
+                data() {
+                    return {
+                        info: {
+                            firstName: 'Yang',
+                            age: 18
+                        }
+                    }
+                }
+            }
+        }
+    });
+</script>

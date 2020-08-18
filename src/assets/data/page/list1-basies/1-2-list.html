@@ -1,0 +1,19 @@
+<div id="app">
+    <ul>
+        <li v-for="item in movies">{{item}}</li>
+    </ul>
+</div>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            message: '你好啊！',
+            movies: ['极盗者', '海贼王', '火影', '少年派']
+        }
+    });
+    app.movies.push('海绵宝宝');       //push增加数组元素
+    setTimeout(function () {
+        //第一个参数数组索引位置（必选），第二个删除数量（必选），后面的个新增添的内容（可选）
+        app.movies.splice(1, 1, '猫和老鼠', 'ss');
+    }, 2000);
+</script>

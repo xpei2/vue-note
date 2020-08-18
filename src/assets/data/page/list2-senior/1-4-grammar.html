@@ -1,0 +1,30 @@
+<div id="app">
+    <my-cpn-1></my-cpn-1>
+    <my-cpn-2></my-cpn-2>
+</div>
+<script>
+    //   创建第一个组件
+    // const cpn = Vue.extend()
+    Vue.component('my-cpn-1', {
+        template: `
+        <div>
+            <h3>我是全局组件语法糖</h3>
+            <p>寇妮马</p>
+        </div>
+        `
+    })
+
+    let app = new Vue({
+        el: '#app',
+        components: {
+            'my-cpn-2': {
+                template: `
+            <div>
+                <h3>我是局部组件语法糖</h3>
+                <p>哈撒给</p> 
+            </div>
+            `
+            }
+        }
+    });
+</script>

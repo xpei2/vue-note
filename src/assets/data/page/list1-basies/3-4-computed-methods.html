@@ -1,0 +1,33 @@
+<div id="app">
+    <!-- 直接拼接 -->
+    <p>{{firstName}} {{lastName}}<small>组合值方法，提议少用</small></p>
+    <!-- 通过定义methods -->
+    <p>{{getFullName()}}<small>methods定义的方法，调用一次执行一次，影响性能</small></p>
+    <p>{{getFullName()}}</p>
+    <!-- 通过computed -->
+    <p>{{fullName}}<small>computed定义的计算属性，调用多次只执行一次，有缓存功能</small></p>
+    <p>{{fullName}}</p>
+</div>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            firstName: 'Yang',
+            lastName: 'pei'
+        },
+        methods: {
+            // 没有缓存，调用一次执行一次
+            getFullName() {
+                // console.log('getFullName');
+                return this.firstName + ' ' + this.lastName;
+            }
+        },
+        computed: {
+            // 有缓存，相同的调用只执行一次
+            fullName() {
+                // console.log('fullName');
+                return this.firstName + ' ' + this.lastName;
+            }
+        }
+    });
+</script>

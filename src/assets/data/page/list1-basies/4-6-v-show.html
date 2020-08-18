@@ -1,0 +1,19 @@
+<div id="app">
+    <button @click="showMessage">显示与隐藏</button>
+    <p>v-show：<span v-show="isShow">{{message}}</span><small>条件为false时html文档中还存在此元素，只是display=none</small></p>
+    <p>v-if：<span v-if="isShow">{{message}}</span><small>条件为false时html文档中不存在此元素</small></p>
+</div>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            message: '你好啊！',
+            isShow: true
+        },
+        methods: {
+            showMessage() {
+                this.isShow = !this.isShow;
+            }
+        }
+    });
+</script>

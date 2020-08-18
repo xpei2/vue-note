@@ -1,0 +1,27 @@
+<div id="app">2秒后：{{fullName}}<small>set方法一般不用，所以直接简写</small></div>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            message: '你好啊！',
+            firstName: 'Yang',
+            lastName: 'pei',
+        },
+        //原始写法，因为一般没有set方法，所以省略直接写get函数，且set方法一般得有参数
+        computed: {
+            fullName: {
+                set(newValue) {     //set方法需要传参
+                    const names = newValue.split(' ');
+                    this.firstName = names[0];
+                    this.lastName = names[1];
+                },
+                get() {
+                    return this.firstName + ' ' + this.lastName;
+                }
+            }
+        }
+    });
+    setTimeout(() => {
+        app.fullName = '这里是 set方法测试';
+    }, 2000);
+</script>

@@ -1,0 +1,28 @@
+<div id="app">
+    <p>{{message}}</p>
+    <p><span v-pre>{{message}}</span><small>{{v_pre_msg}}</small></p>
+    <p v-once>{{message}}，流浪者<small>{{v_once_msg}}</small></p>
+    <p><span v-once v-text="message"></span><small>{{v_text_msg}}</small></p>
+    <p>{{url}}</p>
+    <p><span v-html="url">{{url}}</span><small>{{v_html_msg}}</small></p>
+    <p v-cloak>{{cloak}}</span><small>{{v_cloak_msg}}</small></p>
+</div>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            message: '你好啊！',
+            v_pre_msg: '//使用了v-pre指令：不将数据显示在html中，直接显示html文档本身的内容',
+            v_once_msg: '//使用了v-once指令：页面内容不会跟数据产生变化',
+            v_text_msg: '//使用了v-text指令：将message内容显示在html中，缺点：会直接覆盖当前元素原有的内容',
+            url: '<a href="http://www.baidu.com">百度一下</a>',
+            v_html_msg: '//使用了v-html指令：将字符串转换为html代码，缺点：会覆盖当前元素原有内容',
+            cloak: 'js加载中',
+            v_cloak_msg: '//使用了v-cloak指令：将html文档中当前元素隐藏了，js加载后再赋值'
+        }
+    });
+    setTimeout(function () {
+        app.message = '不好！';
+        app.cloak = 'cloak加载到了！';
+    }, 2000);
+</script>

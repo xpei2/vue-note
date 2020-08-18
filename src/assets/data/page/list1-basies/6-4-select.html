@@ -1,0 +1,34 @@
+<div id="app">
+    <div>
+        <h4>select单选</h4>
+        <p>
+            <select name="abc" v-model="fruit">
+                <option value="苹果">苹果</option>
+                <option value="香蕉">香蕉</option>
+                <option value="葡萄">葡萄</option>
+            </select>
+        </p>
+        <p>您选择的是：{{fruit}}</p>
+    </div><br>
+    <div>
+        <h4>select单选</h4>
+        <p>
+            <select name="abc" v-model="fruits" multiple>
+                <option value="苹果">苹果</option>
+                <option value="香蕉">香蕉</option>
+                <option value="葡萄">葡萄</option>
+                <option value="椰子">椰子</option>
+            </select>
+        </p>
+        <p>您选择的是：{{fruits}}</p>
+    </div><br>
+</div>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            fruit: '椰子',
+            fruits: []
+        }
+    });
+</script>

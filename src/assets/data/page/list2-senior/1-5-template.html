@@ -1,0 +1,31 @@
+<div id="app">
+    <my-cpn-1></my-cpn-1>
+    <my-cpn-2></my-cpn-2>
+</div>
+<!-- 1.script标签分离模板 -->
+<script type="text/x-template" id="cpn_1">
+<div>
+<h3>我是script标签分离模板标题</h3>
+<p>我是模板哈哈</p>
+</div>
+</script>
+<!-- 2.template标签 -->
+<template id="cpn_2">
+    <div>
+        <h3>我是template标签分离模板标题</h3>
+        <p>我是模板哈哈</p>
+    </div>
+</template>
+<script>
+    Vue.component('my-cpn-1', {
+        template: '#cpn_1'
+    });
+    let app = new Vue({
+        el: '#app',
+        components: {
+            'my-cpn-2': {
+                template: '#cpn_2'
+            }
+        }
+    });
+</script>

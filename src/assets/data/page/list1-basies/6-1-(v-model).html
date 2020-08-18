@@ -1,0 +1,24 @@
+<div id="app">
+    <p>{{firstInput}}</p>
+    <p><input type="text" v-model="firstInput"><small>v-model实现双向绑定</small></p>
+    <p>{{secondInput}}</p>
+    <p><input type="text" :value="secondInput" @input="secondInput = $event.target.value"><small>v-bind + v-on原理实现双向绑定，利用input事件</small></p>
+    <p>{{thirdInput}}</p>
+    <p><input type="text" :value="thirdInput" @input="changeValue"><small>v-bind + v-on + methods原理实现双向绑定，利用input事件</small></p>
+    <p><em nopadding>扩展知识：input事件：监听用户输入改变input的value值</em></p>
+</div>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            firstInput: '第一个！',
+            secondInput: '第二个',
+            thirdInput: '第三个'
+        },
+        methods: {
+            changeValue(e) {
+                this.thirdInput = e.target.value;
+            }
+        }
+    });
+</script>

@@ -1,0 +1,34 @@
+<style>
+    #app .red {
+        color: red;
+    }
+
+    #app .green {
+        color: green;
+    }
+
+    #app .italic{
+        font-style: italic;
+    }
+</style>
+<div id="app">
+    <p :class="['red', 'green']">{{message}}<small>{{class_msg}}</small></p>
+    <p :class="[red, green]">{{message}}</p>
+    <p :class="getClass()">{{message}}</p>
+</div>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            message: '您好啊！',
+            class_msg: '数组元素加引号就是字符串解析，不加引号一般作为变量解析',
+            red: 'aaa',
+            green: 'bbb'
+        },
+        methods: {
+            getClass: function () {
+                return [this.red, this.green];
+            }
+        }
+    });
+</script>

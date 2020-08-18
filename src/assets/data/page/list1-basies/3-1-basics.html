@@ -1,0 +1,26 @@
+<div id="app">
+    <p>{{firstName + ' ' + lastName}}<small>普通属性写法</small></p>
+    <p>{{firstName}} {{lastName}}<small>普通属性写法</small></p>
+    <p>{{getFullName()}}<small>方法实现属性合并</small></p>
+    <p>{{fullName}}<small>计算属性更方便</small></p>
+</div>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            message: '你好啊！',
+            firstName: '流浪者',
+            lastName: 'Yang'
+        },
+        methods: {
+            getFullName() {
+                return this.firstName + ' ' + this.lastName;
+            }
+        },
+        computed: {//计算属性，按属性取名，不是方法
+            fullName: function () {
+                return this.firstName + ' ' + this.lastName;
+            }
+        }
+    });
+</script>
