@@ -1,0 +1,436 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: url(../images/vue-img.jpg) no-repeat center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-color: rgb(39, 40, 34);
+    color: rgb(248, 248, 242);
+}
+
+/* @font-face {
+    src: url(../../data/font/courier-new.ttf);
+    font-family: 'courier new';
+} */
+p,
+li,
+h1,
+h2,
+h3 {
+    line-height: 200%;
+}
+
+button,
+input[type=submit],
+input[type=reset] {
+    height: 20px;
+    padding: 0 10px;
+    border-radius: 3px;
+    border: 0;
+    line-height: 20px;
+    cursor: pointer;
+}
+
+
+div.wrapper {
+    position: relative;
+    width: 1240px;
+    margin: 0 auto;
+    background-color: rgba(20, 21, 20, 0.69);
+}
+
+/* vue-header */
+
+
+.vue-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    width: 1240px;
+    margin: 0 auto;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 70px;
+    background: url(../images/1.jpg) no-repeat center top/100% auto;
+    background-color: #000;
+}
+
+.nav-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-list>span {
+    display: block;
+    min-width: 100px;
+    height: 34px;
+    margin: 0 10px;
+    border-radius: 8px;
+    line-height: 34px;
+    text-align: center;
+    background-color: #545453;
+    color: #f8f8f2;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.nav-list>span:hover,
+.nav-list .nav-active {
+    background-color: #373833;
+    color: #dc5d48;
+}
+
+/* vue-main */
+.vue-main {
+    min-height: 1080px;
+    padding-top: 90px;
+}
+
+.vue-note {
+    position: relative;
+    z-index: 9;
+    float: right;
+    width: 960px;
+    margin: 0 20px;
+}
+
+.vue-container {
+    position: relative;
+    width: 100%;
+    padding-top: 40px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    background-color: #272822;
+}
+
+.vue-head {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 15px 0 20px;
+    height: 41px;
+}
+
+.vue-head .head-msg {
+    color: #17b3f5;
+}
+
+.content-msg,
+.content-msg .CodeMirror-line {
+    text-align: center;
+    color: #d0245b !important;
+    font-size: 16px !important;
+}
+.content-msg .cm-variable {
+    color: #d0245b !important;
+}
+/* vue-slider*/
+.vue-slider {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 90px;
+    bottom: 0;
+    padding-left: 20px;
+    width: 1240px;
+    margin: 0 auto;
+}
+
+.slider-cont {
+    position: absolute;
+    width: 220px;
+    height: 100%;
+    padding-top: 30px;
+}
+
+.slider-msg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    text-indent: 9px;
+    font-size: 12px;
+    color: #d0245b;
+    background-color: #232322;
+}
+
+.slider-scroll {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #232322;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.slider-scroll::-webkit-scrollbar {
+    width: 8px;
+}
+
+.slider-scroll::-webkit-scrollbar-corner {
+    background-color: #535353;
+    border-radius: 50%;
+}
+
+.slider-scroll::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    background: #535353;
+}
+
+.slider-list>li {
+    padding-bottom: 12px;
+}
+
+.slider-list>li>h2 {
+    padding-left: 10px;
+    font-size: 18px;
+    color: #e0b793;
+}
+
+.slider-sublist>li {
+    height: 30px;
+    line-height: 30px;
+    padding-left: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+
+.slider-sublist>li:hover,
+.slider-sublist .list-active {
+    /* background-color: rgba(105, 105, 105, 0.68); */
+    /* color: #e0b793; */
+    color: #feaa64;
+}
+
+/* note-example */
+.note-example {
+    border-radius: 8px;
+}
+
+.note-example .get-fail-msg {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+}
+
+.example-title {
+    font-size: 18px;
+    color: #dc5d49;
+}
+
+.example-content {
+    min-height: 200px;
+    padding: 0 20px 20px;
+}
+
+.example-content small,
+.example-content em {
+    padding-left: 16px;
+    font-style: normal;
+    font-size: 12px;
+}
+
+.example-content small,
+.example-title strong[important] {
+    color: #d0245b;
+}
+
+.example-content small[nopadding],
+.example-content em[nopadding] {
+    padding-left: 0;
+}
+
+.example-content em {
+    color: #e9ec1d;
+}
+
+/* note-html */
+.note-html {
+    border-radius: 8px 8px 0 0;
+}
+
+.html-head {
+    background: #333333;
+}
+
+.copy-msg {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    margin: -14px auto auto;
+    width: 100px;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 28px;
+    background-color: #5f5f5fa6;
+    color: #18aded;
+    opacity: 0;
+}
+
+.copy-animate {
+    animation: copyMsg 2s ease 1;
+}
+
+@keyframes copyMsg {
+    0% {
+        opacity: .8;
+    }
+
+    10%,
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.html-head .html-headrh {
+    margin-top: 3px;
+}
+
+.html-head .html-headrh span {
+    cursor: pointer;
+    color: #cdcec8;
+}
+
+.html-head .head-enlarge {
+    display: inline-block;
+    vertical-align: sub;
+    margin-left: 10px;
+}
+
+.html-head .html-headrh>span:hover,
+.html-head svg:hover path {
+    fill: #17b3f5;
+    color: #17b3f5;
+}
+
+.html-content {
+    position: relative;
+    top: -30px;
+    width: 100%;
+    height: 1px;
+    resize: none;
+    overflow: hidden;
+}
+
+/* vue_footer */
+#vue_footer {
+    height: 100px;
+}
+
+/* 课堂学习 */
+.break-note .vue-container,
+.break-note .vue-content {
+    padding: 0 0 0 20px;
+    background: none;
+}
+
+.break-note .vue-title {
+    margin: 0;
+    color: #ea1818;
+}
+
+.break-note .vue-subtitle {
+    color: #e0da1b;
+}
+
+.break-note .vue-content small,
+.break-note .vue-content em {
+    padding-left: 16px;
+    font-style: normal;
+    font-size: 12px;
+}
+
+.break-note .vue-content small,
+.break-note .vue-subtitle strong[important] {
+    color: #d0245b;
+}
+
+.break-note .vue-content small[nopadding],
+.break-note .vue-content em[nopadding] {
+    padding-left: 0;
+}
+
+.break-note .vue-content em {
+    color: #e9ec1d;
+}
+
+/* 滚动条 */
+.note-html .CodeMirror {
+    height: 400px;
+    margin-top: -20px;
+}
+
+.CodeMirror-sizer {
+    max-width: 909px !important;
+    min-width: auto !important;
+    border-right: 0 !important;
+    padding-right: 0 !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.CodeMirror .CodeMirror-scroll {
+    height: 95%;
+    margin-bottom: 0;
+    margin-right: 0;
+    padding: 20px 0 0;
+    overflow: scroll !important;
+}
+
+.CodeMirror .CodeMirror-code {
+    padding: 0 0 20px;
+}
+
+.CodeMirror .CodeMirror-lines {
+    padding: 0;
+}
+
+.CodeMirror-vscrollbar,
+.CodeMirror-hscrollbar,
+.CodeMirror-scrollbar-filler {
+    display: none !important;
+}
+
+.CodeMirror-scroll::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+.CodeMirror .CodeMirror-gutters {
+    margin-top: -10px;
+}
+
+.CodeMirror-scroll::-webkit-scrollbar-corner {
+    background-color: #535353;
+    border-radius: 50%;
+}
+
+.CodeMirror-scroll::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    background: #535353;
+}

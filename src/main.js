@@ -1,10 +1,25 @@
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
+require('./css/default');
+require('./css/code-monokai');
+require('./css/codemirror');
+require('./css/base');
+import Vue from 'vue';
+import navJson from './data/navList/navJson';
+import titleJson from './data/titleList/titleJson';
+import Index from './components/common/Index/Index'
 
-Vue.config.productionTip = false
-
+// 实例对象，根组件
 new Vue({
-  router,
-  render: h => h(App)
-}).$mount('#app')
+    el: '#vue',
+    template: '<Index class="wrapper" :index-data="rootData"/>',
+    data: {
+        rootData: {
+            'headerData': navJson,
+            'contentData': titleJson
+        },
+        bus: new Vue(),
+    },
+    // 导航子组件
+    components: {
+        Index
+    }
+});
